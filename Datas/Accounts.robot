@@ -1,0 +1,3 @@
+*** Variables ***
+${ACCOUNTS_GITHUB_EMAIL}                   %{ACCOUNTS_GITHUB_EMAIL}
+${ACCOUNTS_GITHUB_PASSWORD}                %{ACCOUNTS_GITHUB_PASSWORD}
