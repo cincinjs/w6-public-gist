@@ -29,3 +29,10 @@ User should able to create public gist
     GistEditorPage. Click Create Public Gist Button
     GistDetailPage. Verify Gist Created                ${git_description}       ${git_filename}         ${git_code}
 
+User should able to view list of gist
+    [Tags]  Regression  Smoke
+
+    HeaderPage. Click Signin Button On Header
+    LoginPage. Login Using Credentials                 ${ACCOUNTS_GITHUB_EMAIL}            ${ACCOUNTS_GITHUB_PASSWORD}
+    HeaderPage. Open List User Gist
+    GistListPage. Verify user able to view list of user gist
