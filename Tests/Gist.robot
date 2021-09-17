@@ -36,3 +36,18 @@ User should able to view list of gist
     LoginPage. Login Using Credentials                 ${ACCOUNTS_GITHUB_EMAIL}            ${ACCOUNTS_GITHUB_PASSWORD}
     HeaderPage. Open List User Gist
     GistListPage. Verify user able to view list of user gist
+
+User should able to view details of a gist
+    [Tags]  Regression  Smoke
+
+    HeaderPage. Click Signin Button On Header
+    LoginPage. Login Using Credentials                 ${ACCOUNTS_GITHUB_EMAIL}            ${ACCOUNTS_GITHUB_PASSWORD}
+    HeaderPage. Open List User Gist
+    ${FILENAME}     GistListPage. Get Gist Filename On Gist List
+    ${DESC}         GistListPage.Get Gist Description On Gist List
+    ${CODE}         GistListPage.Get Gist Code On Gist List
+    GistListPage. Click Detail Gist
+    GistDetailPage.Verify Filename Text                ${FILENAME}
+    GistDetailPage.Verify Desc Text                    ${DESC}
+    GistDetailPage.Verify Code Text                    ${CODE}
+
