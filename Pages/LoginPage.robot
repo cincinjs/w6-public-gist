@@ -1,6 +1,9 @@
 *** Settings ***
 Resource                                        ../Frameworks/Routers.robot
 *** Variables ***
+# Notifcation
+${text_login_error_message}                     css=[class*='flash-error'] > div[class^='container-lg']
+
 ${field_login_username_email}                   id=login_field
 ${field_login_pasword}                          id=password
 ${button_login_signin}                          css=input[name='commit']
@@ -23,6 +26,11 @@ Click Signin Button
 
 Login Using Credentials
     [Arguments]    ${USERNAME}      ${PASSWORD}
-    Enter Username Or Email         ${USERNAME}
-    Enter Password                  ${PASSWORD}
+    Enter Username Or Email                     ${USERNAME}
+    Enter Password                              ${PASSWORD}
     Click Signin Button
+
+Verify User Got Error Message
+    [Arguments]    ${MESSAGE}
+    Wait Until Element Is Visible               ${text_login_error_message}
+    Element Should Contain                      ${text_login_error_message}                 ${MESSAGE}                  Ignore_cae=Trues

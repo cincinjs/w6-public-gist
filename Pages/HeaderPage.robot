@@ -12,6 +12,7 @@ ${button_header_add_gits}                           xpath=//div[@id='user-links'
 ${button_header_user_profile}                       xpath=//div[@id='user-links']/child::details
 
 # User Profile
+${text_header_profile_username}                     css=a[role='menuitem'] > strong[class$='target']
 ${menu_header_profile_your_gist}                    xpath=//div[@id='user-links']//details-menu/child::a[contains(text(),'Your gists')]
 
 *** Keywords ***
@@ -32,3 +33,8 @@ Open List User Gist
     Wait Until Element Is Visible                   ${menu_header_profile_your_gist}
     Click Element                                   ${menu_header_profile_your_gist}
 
+Verify User Successfully Logged In
+    [Arguments]    ${USERNAME}
+    Click User Profile
+    Wait Until Element Is Visible                   ${text_header_profile_username}
+    Element Should Contain                          ${text_header_profile_username}                 ${USERNAME}         ignore_case=True
