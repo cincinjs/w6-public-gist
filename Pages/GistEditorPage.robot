@@ -3,7 +3,7 @@ Resource                                        ../Frameworks/Routers.robot
 
 *** Variables ***
 ${field_gist_description}                       css=input[name='gist[description]']
-${field_gist_filename}                          css=input[name='gist[contents][][name]']
+${field_gist_filename}                          css=input[type='text'][name='gist[contents][][name]']
 ${field_gist_code}                              css=.CodeMirror-code
 
 ${dropdown_gist_indent_mode}                    id=indent-mode
@@ -18,25 +18,26 @@ ${dropdown_gist_wrap_mode}                      id=line-wrap-mode
 ${dropdown_gist_wrap_no}                        css=option[value='off']
 ${dropdown_gist_wrap_soft}                      css=option[value='on']
 
+# Bottom
 ${button_gist_create_gist}                      xpath=//div[@class='BtnGroup']/button
 ${button_gist_create_options}                   xpath=//div[@class='BtnGroup']/button/following-sibling::details
 ${button_gist_create_public_gist}               xpath=//div[@class='BtnGroup']//ancestor::span[contains(text(),'Create public gist')]
-
+${button_gist_update_gist}                      css=[class$='btn-primary btn']
 *** Keywords ***
 Enter Gist Description
     [Arguments]         ${DESCRIPTION}
     Wait Until Element Is Visible               ${field_gist_description}
-    Input Text                                  ${field_gist_description}               ${DESCRIPTION}
+    Input Text                                  ${field_gist_description}               ${DESCRIPTION}          clear=False
 
 Enter Gist Filename
     [Arguments]         ${FILENAME}
     Wait Until Element Is Visible               ${field_gist_filename}
-    Input Text                                  ${field_gist_filename}                  ${FILENAME}
+    Input Text                                  ${field_gist_filename}                  ${FILENAME}             clear=False
 
 Enter Gist Code
     [Arguments]         ${CODE}
     Wait Until Element Is Visible               ${field_gist_code}
-    Input Text                                  ${field_gist_code}                      ${CODE}
+    Input Text                                  ${field_gist_code}                      ${CODE}                 clear=False
 
 Click Create Public Gist Button
     Wait Until Element Is Visible               ${button_gist_create_options}
@@ -64,3 +65,7 @@ Choose Soft Wrapped Mode
     Click Element                               ${dropdown_gist_wrap_mode}
     Wait Until Element Is Visible               ${dropdown_gist_wrap_soft}
     Click Element                               ${dropdown_gist_wrap_soft}
+
+Click Update Gist Button
+    Wait Until Element Is Visible               ${button_gist_update_gist}
+    Click Element                               ${button_gist_update_gist}
