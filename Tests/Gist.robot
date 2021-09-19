@@ -78,3 +78,13 @@ User able to update a gist
     GistEditorPage. Click Update Gist Button
     GistDetailPage. Verify Gist Data                   ${DESC}${git_description}       ${FILENAME}${git_filename}         ${CODE}${git_code}
 
+User able to delete a gist
+    [Tags]  Regression  Smoke
+
+    HeaderPage. Click Signin Button On Header
+    LoginPage. Login Using Credentials                 ${ACCOUNTS_GITHUB_EMAIL}            ${ACCOUNTS_GITHUB_PASSWORD}
+    HeaderPage. Open List User Gist
+    ${FILENAME}     GistListPage. Get Gist Filename On Gist List
+    GistListPage. Click Detail Gist
+    GistDetailPage. Click Delete Button
+    GistListPage.Verify Gist Deleted                   ${FILENAME}
