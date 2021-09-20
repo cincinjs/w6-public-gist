@@ -5,7 +5,7 @@ Resource                                            ../Frameworks/Routers.robot
 
 ## Right Side
 # Non Login
-${button_header_signin}                             css=div[role='navigation'] > .HeaderMenu-link.mr-3.no-underline
+${button_header_signin}                             css=div > a[data-ga-click$='sign in']
 
 # Logged In
 ${button_header_add_gits}                           xpath=//div[@id='user-links']//preceding-sibling::*//a[@aria-label='Create new gist']
